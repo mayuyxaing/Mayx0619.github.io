@@ -1,0 +1,40 @@
+:root { --paper:#f5eedf; --ink:#1f3147; --muted:#667085; --card:#fff; --line:#d9dfe6; --accent:#315b86; }
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; color:var(--ink); background:var(--paper); font-family:Georgia,"Noto Serif SC","Songti SC",serif; }
+a { color:inherit; text-decoration:none; }
+.site-nav { max-width:1250px; margin:0 auto; padding:22px 34px; display:flex; align-items:center; justify-content:space-between; }
+.site-name { font-size:25px; font-weight:700; letter-spacing:.04em; }
+.site-nav nav { display:flex; gap:34px; font-size:16px; }
+.site-nav nav a { padding:9px 14px; border-radius:12px; }
+.site-nav nav a:hover,.site-nav nav a.active { background:#e4e1da; }
+.home-shell { max-width:1160px; margin:32px auto 80px; padding:0 30px; display:grid; grid-template-columns:300px minmax(0,1fr); gap:70px; }
+.profile-panel { text-align:center; }
+.profile-photo { width:245px; height:300px; object-fit:cover; border-radius:18px; background:#fff; box-shadow:0 14px 30px rgba(38,49,65,.14); }
+.profile-panel h1 { margin:24px 0 2px; font-size:31px; }
+.profile-name { margin:0; font-size:18px; color:var(--muted); }
+.profile-role { margin:25px 0 4px; font-size:20px; font-weight:700; }
+.profile-affiliation { margin:0; color:var(--muted); line-height:1.8; font-size:17px; }
+.social-links { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin:28px 0; }
+.social-links a { border:1px solid var(--line); border-radius:999px; padding:7px 11px; font-size:13px; background:rgba(255,255,255,.5); }
+.interest-card { margin-top:32px; padding:22px; text-align:left; border-radius:14px; background:#edf2f6; }
+.interest-card h2 { margin:0 0 12px; font-size:20px; }
+.interest-card p { margin:0; color:var(--muted); line-height:1.8; }
+.home-content { min-width:0; }
+.intro-section h2,.home-section h2 { margin:0 0 18px; font-size:31px; }
+.intro-text { font-size:18px; line-height:2; color:#3e536b; }
+.home-section { margin-top:48px; }
+.section-heading { display:flex; align-items:baseline; justify-content:space-between; gap:20px; }
+.section-heading a { color:var(--accent); font-size:15px; }
+.featured-papers { display:grid; gap:16px; }
+.paper-card { padding:22px 24px; background:var(--card); border:1px solid #e1e6eb; border-radius:14px; box-shadow:0 6px 18px rgba(38,49,65,.05); }
+.paper-card h3 { margin:0 0 12px; font-size:21px; line-height:1.35; }
+.paper-card h3 a:hover { color:var(--accent); }
+.paper-authors,.paper-venue { margin:6px 0; color:var(--muted); line-height:1.6; }
+.tag-list { display:flex; flex-wrap:wrap; gap:8px; margin-top:12px; }
+.tag-list span { border:1px solid #b8c8d8; color:var(--accent); border-radius:999px; padding:3px 9px; font-size:12px; }
+.news-list { display:grid; gap:14px; }
+.news-item { display:grid; grid-template-columns:100px 1fr; gap:18px; align-items:baseline; }
+.news-item time { color:var(--muted); font-size:14px; }
+.news-item p { margin:0; line-height:1.7; }
+@media (max-width:850px) { .site-nav { padding:18px 20px; align-items:flex-start; gap:12px; } .site-nav nav { gap:6px; flex-wrap:wrap; justify-content:flex-end; } .home-shell { grid-template-columns:1fr; gap:34px; margin-top:12px; } .profile-panel { max-width:360px; margin:0 auto; } .profile-photo { width:220px; height:270px; } }
