@@ -45,21 +45,42 @@ title = "Yuxiang Ma - Academic Homepage"
     tag = "tags"
     
 [params]
-    profilePhoto = "/images/yuxiangma.png"
-    bio = """
-    I am Yuxiang Ma, a researcher at Xi'an Jiaotong University.
+profilePhoto = "/images/yuxiang-ma.png"
+cv = "/cv/ma-yuxiang-cv.pdf"
 
-    My research interests include statistical learning, machine learning, and related topics.
-    """
-    
+bio = """
+马玉祥，哈尔滨工业大学计算机科学与技术学院博士生在读，现从事具身智能方向相关研究。
+
+2024 年取得哈尔滨工业大学学士学位，2026 年取得西安交通大学硕士学位。
+"""
+
 [[params.social]]
-    name = "Google Scholar"
-    url = "https://scholar.google.com/citations?user=5vqM9GQAAAAJ&hl=zh-CN"
-    
+name = "Email"
+url = "mailto:3124307009@stu.xjtu.edu.cn"
+
 [[params.social]]
-    name = "GitHub"
-    url = "https://github.com/Mayx619"
-    
+name = "GitHub"
+url = "https://github.com/mayuyxaing"
+
+[[params.social]]
+name = "Google Scholar"
+url = "https://scholar.google.com/citations?user=5vqM9GQAAAAJ&hl=zh-CN"
+
+[[params.social]]
+name = "ORCID"
+url = "https://orcid.org/0009-0001-3045-608X"
+
+[[params.news]]
+date = "2026"
+content = "加入哈尔滨工业大学计算机科学与技术学院。"
+
+[[params.news]]
+date = "2024"
+content = "加入西安交通大学数学与统计学院。"
+
+[[params.news]]
+date = "2020"
+content = "加入哈尔滨工业大学计算机科学与技术学院。"
 [[params.social]]
     name = "Email"
     url = "3124307009@stu.xjtu.edu.cn"
