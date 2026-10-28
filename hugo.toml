@@ -1,7 +1,6 @@
 baseURL = "https://mayx619.github.io/"
 languageCode = "zh-cn"
 title = "Yuxiang Ma - Academic Homepage"
-theme = "Scholar-Lite"
 
 [markup]
   [markup.goldmark]
@@ -45,7 +44,7 @@ theme = "Scholar-Lite"
     tag = "tags"
     
 [params]
-    profilePhoto = "/images/Yu Xiang Ma"
+    profilePhoto = "/images/Yu xiang Ma.png"
     bio = """
     I am Yuxiang Ma, a researcher at Xi'an Jiaotong University.
 
