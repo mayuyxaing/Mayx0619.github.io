@@ -46,7 +46,7 @@ title = "Yuxiang Ma - Academic Homepage"
     
 [params]
 profilePhoto = "https://mayuyxaing.github.io/Mayx0619.github.io/images/yuxiang-ma.png"
-cv = "/cv/ma-yuxiang-cv.pdf"
+cv = "https://mayuyxaing.github.io/Mayx0619.github.io/statis/cv/ma-yuxiang-cv.pdf"
 
 bio = """
 马玉祥，哈尔滨工业大学计算机科学与技术学院博士生在读，现从事具身智能方向相关研究。2024 年取得哈尔滨工业大学学士学位，2026 年取得西安交通大学硕士学位。
