@@ -45,13 +45,11 @@ title = "Yuxiang Ma - Academic Homepage"
     tag = "tags"
     
 [params]
-profilePhoto = "/images/yuxiang-ma.png"
+profilePhoto = "https://mayuyxaing.github.io/Mayx0619.github.io/images/yuxiang-ma.png"
 cv = "/cv/ma-yuxiang-cv.pdf"
 
 bio = """
-马玉祥，哈尔滨工业大学计算机科学与技术学院博士生在读，现从事具身智能方向相关研究。
-
-2024 年取得哈尔滨工业大学学士学位，2026 年取得西安交通大学硕士学位。
+马玉祥，哈尔滨工业大学计算机科学与技术学院博士生在读，现从事具身智能方向相关研究。2024 年取得哈尔滨工业大学学士学位，2026 年取得西安交通大学硕士学位。
 """
 
 [[params.social]]
@@ -69,6 +67,10 @@ url = "https://scholar.google.com/citations?user=5vqM9GQAAAAJ&hl=zh-CN"
 [[params.social]]
 name = "ORCID"
 url = "https://orcid.org/0009-0001-3045-608X"
+
+[[params.news]]
+date = "2026"
+content = "获得国家奖学金。"
 
 [[params.news]]
 date = "2026"
