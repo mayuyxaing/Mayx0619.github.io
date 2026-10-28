@@ -2,6 +2,7 @@ baseURL = "https://mayx619.github.io/"
 languageCode = "zh-cn"
 title = "Yuxiang Ma - Academic Homepage"
 
+
 [markup]
   [markup.goldmark]
     [markup.goldmark.renderer]
