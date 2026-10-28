@@ -54,7 +54,7 @@ theme = "Scholar-Lite"
     
 [[params.social]]
     name = "Google Scholar"
-    url = "https://scholar.google.com/citations?hl=zh-CN&user=w-KSO70AAAAJ"
+    url = "https://scholar.google.com/citations?user=5vqM9GQAAAAJ&hl=zh-CN"
     
 [[params.social]]
     name = "GitHub"
@@ -62,4 +62,4 @@ theme = "Scholar-Lite"
     
 [[params.social]]
     name = "Email"
-    url = "mailto:dp_yin@stu.xjtu.edu.cn"
+    url = "3124307009@stu.xjtu.edu.cn"
