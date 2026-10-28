@@ -30,6 +30,12 @@
         <h2>研究兴趣</h2>
         <p>具身智能、代理建模、主动学习、机器学习</p>
       </div>
+    </aside>
+    <section class="home-content">
+      <section class="intro-section">
+        <h2>个人简介</h2>
+        <div class="intro-text">{{ .Site.Params.bio | markdownify }}</div>
+      </section>
       <section class="news-card" id="news">
         <h2>动态</h2>
         <div class="news-list">
@@ -38,23 +44,20 @@
           {{ end }}
         </div>
       </section>
-    </aside>
-    <section class="home-content">
-      <section class="intro-section">
-        <h2>个人简介</h2>
-        <div class="intro-text">{{ .Site.Params.bio | markdownify }}</div>
-      </section>
       <section class="home-section" id="publications">
         <div class="section-heading"><h2>精选论文</h2><a href="{{ "posts/" | absURL }}">查看全部 →</a></div>
         <div class="featured-papers">
-          {{ $posts := where .Site.RegularPages "Section" "posts" }}
-          {{ range first 3 $posts }}
+          {{ $featuredSlugs := slice "adaptive-learning-function-selection" "adaptive-gain-diversity-learning" "scale-free-coverage-aware-learning" }}
+          {{ range $featuredSlugs }}
+            {{ $page := $.Site.GetPage (printf "/posts/%s" .) }}
+            {{ with $page }}
             <article class="paper-card">
               <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
               {{ with .Params.authors }}<p class="paper-authors">{{ delimit . ", " }}</p>{{ end }}
               <p class="paper-venue">{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}</p>
               <div class="tag-list">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
             </article>
+            {{ end }}
           {{ end }}
         </div>
       </section>
@@ -62,4 +65,3 @@
   </main>
 </body>
 </html>
-
