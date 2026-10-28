@@ -1,35 +1,51 @@
-马玉祥
-简介 论文 {{ with .Site.Params.cv }}简历{{ end }} 动态
-马玉祥
-马玉祥
-Yuxiang Ma
-
-博士生
-
-哈尔滨工业大学
-计算机科学与技术学院
-
-{{ range .Site.Params.social }}{{ .name }}{{ end }}
-研究兴趣
-具身智能、代理建模、主动学习、机器学习
-
-个人简介
-{{ .Site.Params.bio | markdownify }}
-精选论文
-查看全部 →
-{{ $posts := where .Site.RegularPages "Section" "posts" }} {{ range first 3 $posts }}
-{{ .Title }}
-{{ with .Params.authors }}
-{{ delimit . ", " }}
-
-{{ end }}
-{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}
-
-{{ range .Params.tags }}{{ . }}{{ end }}
-{{ end }}
-动态
-{{ range .Site.Params.news }}
-{{ .date }}
-{{ .content | markdownify }}
-
-{{ end }}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}">
+</head>
+<body class="homepage">
+  <header class="site-nav">
+    <a class="site-name" href="{{ "/" | relURL }}">马玉祥</a>
+    <nav aria-label="主导航">
+      <a class="active" href="{{ "/" | relURL }}">简介</a>
+      <a href="{{ "/posts/" | relURL }}">论文</a>
+      {{ with .Site.Params.cv }}<a href="{{ . | relURL }}">简历</a>{{ end }}
+      <a href="#news">动态</a>
+    </nav>
+  </header>
+  <main class="home-shell">
+    <aside class="profile-panel">
+      <img class="profile-photo" src="{{ .Site.Params.profilePhoto | default "/images/yuxiang-ma.png" | relURL }}" alt="马玉祥">
+      <h1>马玉祥</h1>
+      <p class="profile-name">Yuxiang Ma</p>
+      <p class="profile-role">博士生</p>
+      <p class="profile-affiliation">哈尔滨工业大学<br>计算机科学与技术学院</p>
+      <div class="social-links">
+        {{ range .Site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">{{ .name }}</a>{{ end }}
+      </div>
+      <div class="interest-card"><h2>研究兴趣</h2><p>具身智能、代理建模、主动学习、机器学习</p></div>
+    </aside>
+    <section class="home-content">
+      <section class="intro-section"><h2>个人简介</h2><div class="intro-text">{{ .Site.Params.bio | markdownify }}</div></section>
+      <section class="home-section" id="publications">
+        <div class="section-heading"><h2>精选论文</h2><a href="{{ "/posts/" | relURL }}">查看全部 →</a></div>
+        <div class="featured-papers">
+          {{ $posts := where .Site.RegularPages "Section" "posts" }}
+          {{ range first 3 $posts }}
+            <article class="paper-card">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              {{ with .Params.authors }}<p class="paper-authors">{{ delimit . ", " }}</p>{{ end }}
+              <p class="paper-venue">{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}</p>
+              <div class="tag-list">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+      <section class="home-section" id="news"><div class="section-heading"><h2>动态</h2></div><div class="news-list">{{ range .Site.Params.news }}<div class="news-item"><time>{{ .date }}</time><p>{{ .content | markdownify }}</p></div>{{ end }}</div></section>
+    </section>
+  </main>
+</body>
+</html>
