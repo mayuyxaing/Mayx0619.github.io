@@ -40,30 +40,26 @@ theme = "Scholar-Lite"
     noHl = false
     tabWidth = 4
 
-[taxonomies]
-  venue = "venue"
-  tag = "tags"
-
-[params]
-  profilePhoto = "/images/profile.svg"
-  bio = """
-  I am Yuxaing Ma, a researcher at Xi'an Jiaotong University.
-
-  My research interests include statistical learning, machine learning, and related topics.
-  """
-  You can find my work on [GitHub](https://github.com) and connect with me on [Twitter](https://twitter.com).
+  [taxonomies]
+    venue = "venue"
+    tag = "tags"
   
-  Currently working on exciting projects in deep learning and natural language processing."""
-
-  # Social Media
-  [[params.social]]
-  name = "Google Scholar"
-  url = "https://scholar.google.com/citations?hl=zh-CN&user=w-KSO70AAAAJ"
-
-  [[params.social]]
-  name = "GitHub"
-  url = "https://github.com/Mayx619"
-
-  [[params.social]]
-  name = "Email"
-  url = "mailto:dp_yin@stu.xjtu.edu.cn"
+  [params]
+    profilePhoto = "/images/profile.svg"
+    bio = """
+    I am Yuxiang Ma, a researcher at Xi'an Jiaotong University.
+  
+    My research interests include statistical learning, machine learning, and related topics.
+    """
+  
+    [[params.social]]
+      name = "Google Scholar"
+      url = "https://scholar.google.com/citations?hl=zh-CN&user=w-KSO70AAAAJ"
+  
+    [[params.social]]
+      name = "GitHub"
+      url = "https://github.com/Mayx619"
+  
+    [[params.social]]
+      name = "Email"
+      url = "mailto:dp_yin@stu.xjtu.edu.cn"
