@@ -45,7 +45,7 @@ theme = "Scholar-Lite"
     tag = "tags"
     
 [params]
-    profilePhoto = "/images/profile.svg"
+    profilePhoto = "/images/Yu Xiang Ma"
     bio = """
     I am Yuxiang Ma, a researcher at Xi'an Jiaotong University.
 
