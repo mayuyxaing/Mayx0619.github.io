@@ -1,55 +1,51 @@
-{{ define "main" }}
-  <!-- DEBUG: Using Scholar-Lite home.html -->
-  <div class="posts-container">
-    <h1 class="main-title">Publications</h1>
-    <div class="posts-section">
-      {{ $index := 0 }}
-      {{ range site.RegularPages }}
-        {{ $index = add $index 1 }}
-        <article class="post-card" data-post-id="{{ $index }}">
-          <div class="post-header" data-post-id="{{ $index }}">
-            <h2>{{ .LinkTitle }}</h2>
-            <div class="post-meta">
-              <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-              {{ with .Params.venue }}
-                {{ if reflect.IsSlice . }}
-                  • <span class="tag tag-venue">{{ index . 0 }}</span>
-                {{ else }}
-                  • <span class="tag tag-venue">{{ . }}</span>
-                {{ end }}
-              {{ end }}
-            </div>
-            {{ if and (.Params.keywords) (gt (len .Params.keywords) 0) }}
-              <div class="post-keywords">
-                  {{ range .Params.keywords }}
-                    {{ if in . "/" }}
-                      {{ $parts := split . "/" }}
-                      <span class="tag-group">
-                        <span class="tag tag-keyword tag-level-1">{{ index $parts 0 }}</span>
-                        {{ if gt (len $parts) 1 }}
-                          <span class="tag-separator">/</span>
-                          <span class="tag tag-keyword tag-level-2">{{ index $parts 1 }}</span>
-                        {{ end }}
-                        {{ if gt (len $parts) 2 }}
-                          <span class="tag-separator">/</span>
-                          <span class="tag tag-keyword tag-level-3">{{ index $parts 2 }}</span>
-                        {{ end }}
-                      </span>
-                    {{ else }}
-                      <span class="tag tag-keyword">{{ . }}</span>
-                    {{ end }}
-                  {{ end }}
-                </div>
-              {{ end }}
-            </div>
-          
-          <div class="post-content" id="content-{{ $index }}" style="display: none;">
-            <div class="post-full-content">
-              {{ .Content }}
-            </div>
-          </div>
-        </article>
-      {{ end }}
-    </div>
-  </div>
-{{ end }}
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <link rel="stylesheet" href="{{ "css/homepage.css" | relURL }}">
+</head>
+<body class="homepage">
+  <header class="site-nav">
+    <a class="site-name" href="{{ "/" | relURL }}">马玉祥</a>
+    <nav aria-label="主导航">
+      <a class="active" href="{{ "/" | relURL }}">简介</a>
+      <a href="{{ "/posts/" | relURL }}">论文</a>
+      {{ with .Site.Params.cv }}<a href="{{ . | relURL }}">简历</a>{{ end }}
+      <a href="#news">动态</a>
+    </nav>
+  </header>
+  <main class="home-shell">
+    <aside class="profile-panel">
+      <img class="profile-photo" src="{{ .Site.Params.profilePhoto | default "/images/yuxiang-ma.png" | relURL }}" alt="马玉祥">
+      <h1>马玉祥</h1>
+      <p class="profile-name">Yuxiang Ma</p>
+      <p class="profile-role">博士生</p>
+      <p class="profile-affiliation">哈尔滨工业大学<br>计算机科学与技术学院</p>
+      <div class="social-links">
+        {{ range .Site.Params.social }}<a href="{{ .url }}" target="_blank" rel="noopener" aria-label="{{ .name }}">{{ .name }}</a>{{ end }}
+      </div>
+      <div class="interest-card"><h2>研究兴趣</h2><p>具身智能、代理建模、主动学习、机器学习</p></div>
+    </aside>
+    <section class="home-content">
+      <section class="intro-section"><h2>个人简介</h2><div class="intro-text">{{ .Site.Params.bio | markdownify }}</div></section>
+      <section class="home-section" id="publications">
+        <div class="section-heading"><h2>精选论文</h2><a href="{{ "/posts/" | relURL }}">查看全部 →</a></div>
+        <div class="featured-papers">
+          {{ $posts := where .Site.RegularPages "Section" "posts" }}
+          {{ range first 3 $posts }}
+            <article class="paper-card">
+              <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+              {{ with .Params.authors }}<p class="paper-authors">{{ delimit . ", " }}</p>{{ end }}
+              <p class="paper-venue">{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}</p>
+              <div class="tag-list">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+            </article>
+          {{ end }}
+        </div>
+      </section>
+      <section class="home-section" id="news"><div class="section-heading"><h2>动态</h2></div><div class="news-list">{{ range .Site.Params.news }}<div class="news-item"><time>{{ .date }}</time><p>{{ .content | markdownify }}</p></div>{{ end }}</div></section>
+    </section>
+  </main>
+</body>
+</html>
