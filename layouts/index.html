@@ -1,39 +1,35 @@
-{{ define "main" }}
-  <!-- DEBUG: Using index.html template -->
-  <div class="posts-container">
-    <div class="posts-section">
-      {{ $index := 0 }}
-      {{ range site.RegularPages }}
-        {{ $index = add $index 1 }}
-        <article class="post-card" data-post-id="{{ $index }}">
-          <div class="post-header" data-post-id="{{ $index }}">
-            <div class="post-title-section">
-              <h2>{{ .LinkTitle }}</h2>
-              <div class="post-meta">
-                <time>{{ .Date.Format "Jan 2, 2006" }}</time>
-                {{ with .Params.venue }} 
-                  • <span class="tag tag-venue">{{ . }}</span>
-                {{ end }}
-              </div>
-              <div class="tag-section">
-                {{ if and (.Params.keywords) (gt (len .Params.keywords) 0) }}
-                  <div class="post-keywords">
-                    {{ range .Params.keywords }}
-                      <span class="tag tag-keyword">{{ . }}</span>
-                    {{ end }}
-                  </div>
-                {{ end }}
-              </div>
-            </div>
-          </div>
-          
-          <div class="post-content" id="content-{{ $index }}" style="display: none;">
-            <div class="post-full-content">
-              {{ .Content }}
-            </div>
-          </div>
-        </article>
-      {{ end }}
-    </div>
-  </div>
+马玉祥
+简介 论文 {{ with .Site.Params.cv }}简历{{ end }} 动态
+马玉祥
+马玉祥
+Yuxiang Ma
+
+博士生
+
+哈尔滨工业大学
+计算机科学与技术学院
+
+{{ range .Site.Params.social }}{{ .name }}{{ end }}
+研究兴趣
+具身智能、代理建模、主动学习、机器学习
+
+个人简介
+{{ .Site.Params.bio | markdownify }}
+精选论文
+查看全部 →
+{{ $posts := where .Site.RegularPages "Section" "posts" }} {{ range first 3 $posts }}
+{{ .Title }}
+{{ with .Params.authors }}
+{{ delimit . ", " }}
+
+{{ end }}
+{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}
+
+{{ range .Params.tags }}{{ . }}{{ end }}
+{{ end }}
+动态
+{{ range .Site.Params.news }}
+{{ .date }}
+{{ .content | markdownify }}
+
 {{ end }}
