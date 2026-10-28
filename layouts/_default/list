@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>论文 | {{ .Site.Title }}</title>
+  <link rel="stylesheet" href="{{ "css/homepage.css" | absURL }}">
+</head>
+<body class="homepage">
+  <header class="site-nav">
+    <a class="site-name" href="{{ "" | absURL }}">马玉祥</a>
+    <nav aria-label="主导航">
+      <a href="{{ "" | absURL }}">简介</a>
+      <a class="active" href="{{ "posts/" | absURL }}">论文</a>
+      {{ with .Site.Params.cv }}<a href="{{ "cv/ma-yuxiang-cv.pdf" | absURL }}">简历</a>{{ end }}
+      <a href="{{ "#news" | absURL }}">动态</a>
+    </nav>
+  </header>
+  <main class="list-shell">
+    <div class="section-heading"><h1>论文</h1></div>
+    <div class="featured-papers">
+      {{ range .Pages.ByDate.Reverse }}
+      <article class="paper-card">
+        <h2><a href="{{ .RelPermalink }}">{{ .Title }}</a></h2>
+        {{ with .Params.authors }}<p class="paper-authors">{{ delimit . ", " }}</p>{{ end }}
+        <p class="paper-venue">{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}</p>
+        <div class="tag-list">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div>
+      </article>
+      {{ end }}
+    </div>
+  </main>
+</body>
+</html>
