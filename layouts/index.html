@@ -1,40 +1,117 @@
-马玉祥
-简介论文教学{{ with .Site.Params.cv }}简历{{ end }}动态English
-马玉祥
-马玉祥
-Yuxiang Ma
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Site.Title }}</title>
+  <link rel="stylesheet" href="{{ "css/homepage.css" | absURL }}">
+</head>
+<body class="homepage">
+  <header class="site-nav">
+    <a class="site-name" href="{{ "" | absURL }}">马玉祥</a>
+    <nav aria-label="主导航">
+      <a class="active" href="{{ "" | absURL }}">简介</a>
+      <a href="{{ "posts/" | absURL }}">论文</a>
+      <a href="#teaching">教学</a>
+      <a href="{{ "cv/ma-yuxiang-cv.pdf" | absURL }}">简历</a>
+      <a href="#news">动态</a>
+      <a class="lang-link" href="{{ "en/" | absURL }}">English</a>
+    </nav>
+  </header>
 
-博士生
+  <main class="home-shell">
+    <aside class="profile-panel">
+      <img
+        class="profile-photo"
+        src="{{ .Site.Params.profilePhoto | default "images/yuxiang-ma.png" | replaceRE "^/" "" | absURL }}"
+        alt="马玉祥"
+      >
+      <h1>马玉祥</h1>
+      <p class="profile-name">Yuxiang Ma</p>
+      <p class="profile-role">博士生</p>
+      <p class="profile-affiliation">
+        哈尔滨工业大学<br>
+        计算机科学与技术学院
+      </p>
 
-哈尔滨工业大学
-计算机科学与技术学院
+      <div class="social-links">
+        {{ range .Site.Params.social }}
+          <a href="{{ .url }}" target="_blank" rel="noopener">{{ .name }}</a>
+        {{ end }}
+      </div>
 
-{{ range .Site.Params.social }}{{ .name }}{{ end }}
-研究兴趣
-具身智能、代理建模、主动学习、机器学习
+      <div class="interest-card">
+        <h2>研究兴趣</h2>
+        <p>具身智能、代理建模、主动学习、机器学习</p>
+      </div>
+    </aside>
 
-个人简介
-{{ .Site.Params.bio | markdownify }}
-动态
-{{ range .Site.Params.news }}
-{{ .date }}
-{{ .content | markdownify }}
+    <section class="home-content">
+      <section class="intro-section">
+        <h2>个人简介</h2>
+        <div class="intro-text">{{ .Site.Params.bio | markdownify }}</div>
+      </section>
 
-{{ end }}
-精选论文
-查看全部 →
-{{ $featuredSlugs := slice "adaptive-learning-function-selection" "adaptive-gain-diversity-learning" "scale-free-coverage-aware-learning" }}{{ range $featuredSlugs }}{{ $page := $.Site.GetPage (printf "/posts/%s" .) }}{{ with $page }}
-{{ .Title }}
-{{ with .Params.authors }}
-{{ delimit . ", " }}
+      <section class="news-card" id="news">
+        <h2>动态</h2>
+        <div class="news-list">
+          {{ range .Site.Params.news }}
+            <div class="news-item">
+              <time>{{ .date }}</time>
+              <p>{{ .content | markdownify }}</p>
+            </div>
+          {{ end }}
+        </div>
+      </section>
 
-{{ end }}
-{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}
+      <section class="home-section" id="publications">
+        <div class="section-heading">
+          <h2>精选论文</h2>
+          <a href="{{ "posts/" | absURL }}">查看全部 →</a>
+        </div>
 
-{{ range .Params.tags }}{{ . }}{{ end }}
-{{ end }}{{ end }}
-教学
-{{ with .Site.Params.teaching }}{{ . | markdownify }}{{ else }}
-教学内容待补充
+        <div class="featured-papers">
+          {{ $slugs := slice
+            "adaptive-learning-function-selection"
+            "adaptive-gain-diversity-learning"
+            "scale-free-coverage-aware-learning"
+          }}
+          {{ range $slugs }}
+            {{ $paper := $.Site.GetPage (printf "/posts/%s" .) }}
+            {{ with $paper }}
+              <article class="paper-card">
+                <h3>
+                  <a href="{{ .Params.pdf | default .RelPermalink | absURL }}"
+                     target="_blank" rel="noopener">
+                    {{ .Title }}
+                  </a>
+                </h3>
+                {{ with .Params.authors }}
+                  <p class="paper-authors">{{ delimit . ", " }}</p>
+                {{ end }}
+                <p class="paper-venue">
+                  {{ .Params.venue }} · {{ .Date.Format "2006" }}
+                </p>
+                <div class="tag-list">
+                  {{ range .Params.tags }}<span>{{ . }}</span>{{ end }}
+                </div>
+              </article>
+            {{ end }}
+          {{ end }}
+        </div>
+      </section>
 
-{{ end }}
+      <section class="home-section teaching-section" id="teaching">
+        <div class="section-heading"><h2>教学</h2></div>
+        <div class="teaching-card">
+          {{ with .Site.Params.teaching }}
+            {{ . | markdownify }}
+          {{ else }}
+            <p>教学内容待补充</p>
+          {{ end }}
+        </div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
