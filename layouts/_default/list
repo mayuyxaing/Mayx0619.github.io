@@ -1,18 +1,19 @@
-马玉祥
-简介论文教学简历English
-PUBLICATIONS
-
-学术论文
-论文、出版信息与引用格式
-
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>论文 | {{ .Site.Title }}</title><link rel="stylesheet" href="{{ "css/homepage.css" | absURL }}"></head>
+<body class="homepage papers-modern">
+<header class="site-nav"><a class="site-name" href="{{ "" | absURL }}">马玉祥</a><nav aria-label="主导航"><a href="{{ "" | absURL }}">简介</a><a class="active" href="{{ "posts/" | absURL }}">论文</a><a href="{{ "" | absURL }}#teaching">教学</a><a href="{{ "cv/ma-yuxiang-cv.pdf" | absURL }}">简历</a><a class="lang-link" href="{{ "en/" | absURL }}">English</a></nav></header>
+<main class="papers-main"><div class="papers-intro"><p class="papers-kicker">PUBLICATIONS</p><h1>学术论文</h1><p>论文、出版信息与引用格式</p></div><div class="papers-list">
 {{ range .Pages.ByDate.Reverse }}{{ if .Params.doi }}{{ $paper := . }}
-{{ .Date.Format "2006" }}{{ .Params.venue }}
-{{ .Title }}
-{{ with .Params.authors }}
-{{ delimit . ", " }}
-
-{{ end }}
-DOI ↗{{ with .Params.pdf }}PDF ↗{{ else }}PDF 待上传{{ end }}
-BibTeX
-{{ range .Params.tags }}{{ . }}{{ end }}
-{{ end }}{{ end }}
+<article class="publication-card"><div class="publication-meta"><span>{{ .Date.Format "2006" }}</span><span class="venue-pill">{{ .Params.venue }}</span></div><h2>{{ .Title }}</h2>{{ with .Params.authors }}<p class="publication-authors">{{ delimit . ", " }}</p>{{ end }}
+<div class="publication-actions"><a class="action-button" href="https://doi.org/{{ .Params.doi }}" target="_blank" rel="noopener">DOI ↗</a>{{ with .Params.pdf }}<a class="action-button pdf-button" href="{{ . | absURL }}" target="_blank" rel="noopener">PDF ↗</a>{{ else }}<span class="action-button disabled">PDF 待上传</span>{{ end }}<details class="bibtex"><summary>BibTeX</summary><div class="bibtex-box"><button type="button" class="copy-bibtex" aria-label="复制 BibTeX">复制</button><pre class="bibtex-text">@article{ma{{ $paper.Date.Format "2006" }}{{ $paper.Params.year }}{{ $paper.Params.venue | urlize }},
+  title   = {{{$paper.Title}}},
+  author  = {{{$paper.Params.authors | default (slice) | delimit " and "}}},
+  journal = {{{$paper.Params.venue}}},
+  year    = {{$paper.Params.year}},
+  doi     = {{$paper.Params.doi}},
+  url     = {https://doi.org/{{$paper.Params.doi}}}
+}</pre></div></details></div>
+<div class="publication-tags">{{ range .Params.tags }}<span>{{ . }}</span>{{ end }}</div></article>
+{{ end }}{{ end }}</div></main>
+<script>document.querySelectorAll('.copy-bibtex').forEach(b=>b.addEventListener('click',async()=>{const t=b.nextElementSibling.innerText;await navigator.clipboard.writeText(t);b.textContent='已复制';setTimeout(()=>b.textContent='复制',1500)}));</script>
+</body></html>
