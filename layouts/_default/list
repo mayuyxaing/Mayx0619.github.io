@@ -1,17 +1,18 @@
-马玉祥 Yuxiang Ma
-简介 论文 {{ with .Site.Params.cv }}简历{{ end }}
-RESEARCH
+马玉祥
+简介论文教学简历English
+PUBLICATIONS
 
-论文
-学术论文与研究成果
+学术论文
+论文、出版信息与引用格式
 
-{{ range .Pages.ByDate.Reverse }} {{ if .Params.doi }}
+{{ range .Pages.ByDate.Reverse }}{{ if .Params.doi }}{{ $paper := . }}
 {{ .Date.Format "2006" }}{{ .Params.venue }}
-{{ with .Params.pdf }}{{ $.Title }}{{ else }}{{ .Title }}{{ end }}
+{{ .Title }}
 {{ with .Params.authors }}
 {{ delimit . ", " }}
 
 {{ end }}
+DOI ↗{{ with .Params.pdf }}PDF ↗{{ else }}PDF 待上传{{ end }}
+BibTeX
 {{ range .Params.tags }}{{ . }}{{ end }}
-{{ with .Params.pdf }}阅读 PDF ↗{{ end }} {{ with .Params.doi }}DOI ↗{{ end }}
-{{ end }} {{ end }}
+{{ end }}{{ end }}
