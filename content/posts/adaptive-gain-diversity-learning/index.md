@@ -12,3 +12,4 @@ featured: true
 
 An adaptive gain-diversity learning method for efficient reliability assessment of engineering structures.
 
+
