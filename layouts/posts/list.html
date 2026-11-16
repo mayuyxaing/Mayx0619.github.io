@@ -1,15 +1,1 @@
-马玉祥
-简介 论文 {{ with .Site.Params.cv }}简历{{ end }} 动态
-论文
-{{ range .Pages.ByDate.Reverse }} {{ if .Params.doi }}
-{{ .Title }}
-{{ with .Params.authors }}
-{{ delimit . ", " }}
 
-{{ end }}
-{{ with .Params.venue }}{{ . }}{{ end }} · {{ .Date.Format "2006" }}
-
-{{ range .Params.tags }}{{ . }}{{ end }}
-{{ .Summary | plainify }}
-
-{{ end }} {{ end }}
