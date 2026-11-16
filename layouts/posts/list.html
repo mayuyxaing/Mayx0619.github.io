@@ -1,0 +1,17 @@
+马玉祥 Yuxiang Ma
+简介 论文 {{ with .Site.Params.cv }}简历{{ end }}
+RESEARCH
+
+论文
+学术论文与研究成果
+
+{{ range .Pages.ByDate.Reverse }} {{ if .Params.doi }}
+{{ .Date.Format "2006" }}{{ .Params.venue }}
+{{ with .Params.pdf }}{{ $.Title }}{{ else }}{{ .Title }}{{ end }}
+{{ with .Params.authors }}
+{{ delimit . ", " }}
+
+{{ end }}
+{{ range .Params.tags }}{{ . }}{{ end }}
+{{ with .Params.pdf }}阅读 PDF ↗{{ end }} {{ with .Params.doi }}DOI ↗{{ end }}
+{{ end }} {{ end }}
